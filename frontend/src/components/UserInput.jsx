@@ -36,7 +36,7 @@ function UserInput() {
   };
 
   return (
-      <div className="bg-gray-200 p-4 shadow-md rounded-md fixed right-4 top-1/2 transform -translate-y-1/2 md:w-1/4 h-screen">
+      <div className="bg-gray-200 mt-20 p-4 shadow-md rounded-md fixed right-4 top-1/2 transform -translate-y-1/2 md:w-1/4 h-screen">
         <h2 className="text-lg font-semibold">Parameters:</h2>
         <div className="max-h-full overflow-y-auto">
           <form onSubmit={handleSubmit}>
@@ -199,6 +199,14 @@ function UserInput() {
           >
             Submit
           </button>
+          <div>
+            <br></br>
+            
+            <br></br>
+            
+            <br></br>
+            
+          </div>
         </div>
       </form>
     </div>
