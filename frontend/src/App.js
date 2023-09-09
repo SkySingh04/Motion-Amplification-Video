@@ -5,15 +5,23 @@ import HomePage from './pages/HomePage';
 import Dashboard from './pages/Dashboard';
 import Output from './pages/Output';
 
+
+
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <Navbar />
         <Routes>
+<<<<<<< HEAD
           <Route exact path="/" element={<HomePage/>} />
           <Route path="/dashboard" element={<Dashboard/>} />
           <Route path="/output" element={Output} />
+=======
+          <Route exact path="/" element={ <HomePage />} />
+          <Route path="/dashboard" element={ <Dashboard/>} />
+          <Route path="/output" element={<Output/>} />
+>>>>>>> upstream/master
         </Routes>
       </div>
     </BrowserRouter>
