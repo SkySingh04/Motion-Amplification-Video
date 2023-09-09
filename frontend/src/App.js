@@ -11,9 +11,9 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route exact path="/" element={HomePage} />
-          <Route path="/dashboard" element={Dashboard} />
-          <Route path="/output" element={Output} />
+          <Route exact path="/" element={ <HomePage />} />
+          <Route path="/dashboard" element={ <Dashboard/>} />
+          <Route path="/output" element={<Output/>} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -38,6 +39,7 @@ const Navbar = () => {
           </button>
         </div>
         <div className="hidden lg:block space-x-4">
+
           <Link to="/" className="text-white font-sans hover:text-red-500">
             Home
             <span className="text-white font-sans text-lg ml-4">|</span>
@@ -69,10 +71,10 @@ const Navbar = () => {
           <Link to= "/login" className="block text-white bg-red-700 hover:bg-dark hover:text-white px-2 py-0.6 rounded-lg mb-2">Login</Link>
         </div>
       )}
+
     </nav>
   );
 };
-
 export default Navbar;
 
 
