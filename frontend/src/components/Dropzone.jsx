@@ -12,7 +12,7 @@ const Dropzone = ({ onDrop }) => {
   }`;
 
   return (
-    <div className={`h-1/2 w-full ${dropzoneClasses}`} {...getRootProps()}>
+    <div className={`h-1/6 w-full ${dropzoneClasses}`} {...getRootProps()}>
       <input className="hidden" {...getInputProps()} />
       {isDragActive ? (
         <p className="text-gray-600">Release to drop the files here</p>

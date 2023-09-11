@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes  } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
-import Dashboard from './pages/Dashboard';
+import Upload from './pages/Upload';
 import Output from './pages/Output';
 
 
@@ -14,7 +14,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={ <HomePage />} />
-          <Route path="/dashboard" element={ <Dashboard/>} />
+          <Route path="/upload" element={ <Upload/>} />
           <Route path="/output" element={<Output/>} />
         </Routes>
       </div>

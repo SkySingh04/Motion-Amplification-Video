@@ -44,8 +44,8 @@ const Navbar = () => {
             Home
             <span className="text-white font-sans text-lg ml-4">|</span>
           </Link>
-          <Link to="/dashboard" className="text-white font-sans hover:text-red-500">
-            Dashboard
+          <Link to="/upload" className="text-white font-sans hover:text-red-500">
+            Upload
             <span className="text-white text-lg font-sans ml-4">|</span>
           </Link>
           <Link to="/about" className="text-white font-sans hover:text-red-500">
@@ -62,8 +62,8 @@ const Navbar = () => {
           <Link to="/" className="block text-white hover:text-red-500  mb-4">
             Home
           </Link>
-          <Link to="/dashboard" className="block text-white hover:text-red-500 mb-4">
-            Dashboard
+          <Link to="/upload" className="block text-white hover:text-red-500 mb-4">
+            Upload
           </Link>
           <Link to="/about" className="block text-white hover:text-red-500 mb-4">
             About
