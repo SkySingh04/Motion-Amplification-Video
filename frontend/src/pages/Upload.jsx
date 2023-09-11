@@ -2,6 +2,27 @@ import React, { useCallback, useState } from 'react';
 import Dropzone from '../components/Dropzone';
 import VideoPreview from '../components/VideoPreview';
 import DisplayVideo from '../components/DisplayVideo';
+import s3 from '../aws-config'; // Import the AWS configuration
+
+function uploadToS3(selectedVideo) {
+
+  const params = {
+    Bucket: 'skillissuevid',
+    Key: selectedVideo.name,
+    Body: selectedVideo,
+    ContentType:'video/mp4',
+  };
+
+  s3.putObject(params, (err, data) => {
+    if (err) {
+      console.error('Error uploading to S3:', err);
+    } else {
+      console.log('Successfully uploaded to S3:', data);
+    }
+  });
+}
+
+
 
 function Upload() {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -14,6 +35,9 @@ function Upload() {
     // Assuming you want to select the first video from the accepted videos
     if (acceptedVideos.length > 0) {
       setSelectedVideo(URL.createObjectURL(acceptedVideos[0]));
+      // adding files to aws
+      const videoFile = acceptedVideos[0];
+      uploadToS3(videoFile);
     }
   }, []);
 
@@ -34,3 +58,6 @@ function Upload() {
 }
 
 export default Upload;
+
+
+
