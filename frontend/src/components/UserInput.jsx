@@ -17,6 +17,8 @@ function UserInput() {
     filter_type: 'Butter',
   });
 
+  
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === 'checkbox' ? checked : value;
@@ -34,9 +36,10 @@ function UserInput() {
   };
 
   return (
-    <div className="bg-gray-200 p-4 shadow-md rounded-md fixed right-4 top-1/2 transform -translate-y-1/2 md:w-1/4 h-auto">
-      <h2 className="text-lg font-semibold">User Input</h2>
-      <form onSubmit={handleSubmit}>
+      <div className="bg-gray-200 mt-20 p-4 shadow-md rounded-md fixed right-4 top-1/2 transform -translate-y-1/2 md:w-1/4 h-screen">
+        <h2 className="text-lg font-semibold">Parameters:</h2>
+        <div className="max-h-full overflow-y-auto">
+          <form onSubmit={handleSubmit}>
         <div className="mt-4">
           <label className="block text-sm font-medium text-gray-700">Phase:</label>
           <select
@@ -189,15 +192,24 @@ function UserInput() {
           </select>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4 py-6">
           <button
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
           >
             Submit
           </button>
+          <div>
+            <br></br>
+            
+            <br></br>
+            
+            <br></br>
+            
+          </div>
         </div>
       </form>
+    </div>
     </div>
   );
 }
