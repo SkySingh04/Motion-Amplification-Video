@@ -52,10 +52,6 @@ const Navbar = () => {
             About
             <span className="text-white text-lg font-sans ml-4">|</span>
           </Link>
-          <Link to="/input" className="text-white font-sans hover:text-red-500">
-            Input
-            <span className="text-white text-lg font-sans ml-4">|</span>
-          </Link>
           <button className="bg-red-700 text-white font-sans hover:bg-dark hover:text-white px-4 py-0.6 rounded-lg" onClick={(e) => {navigate('/signup')}}>Signup</button>
           <button className="bg-red-700 text-white font-sans hover:bg-dark hover:text-white px-4 py-0.6 rounded-lg" onClick={(e) => {navigate('/login')}}>Login</button>
         </div>
@@ -72,9 +68,6 @@ const Navbar = () => {
           </Link>
           <Link to="/about" className="block text-white hover:text-red-500 mb-4">
             About
-          </Link>
-          <Link to="/input" className="block text-white hover:text-red-500 mb-4">
-            Input
           </Link>
           <Link to= "/signup" className="block text-white bg-red-700 hover:bg-dark hover:text-white px-2 py-0.6 rounded-lg mb-2">Signup</Link>
           <Link to= "/login" className="block text-white bg-red-700 hover:bg-dark hover:text-white px-2 py-0.6 rounded-lg mb-2">Login</Link>
