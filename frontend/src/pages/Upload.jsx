@@ -3,6 +3,7 @@ import Dropzone from '../components/Dropzone';
 import VideoPreview from '../components/VideoPreview';
 import DisplayVideo from '../components/DisplayVideo';
 import s3 from '../aws-config'; // Import the AWS configuration
+import Navbar from '../components/Navbar';
 
 function uploadToS3(selectedVideo) {
 
@@ -42,6 +43,8 @@ function Upload() {
   }, []);
 
   return (
+    <div>
+      <Navbar/>
     <div className="flex">
       <div className="w-1/4 p-4 h-screen">
         <Dropzone onDrop={onDrop} />
@@ -53,6 +56,7 @@ function Upload() {
       <div className="w-3/4 p-4 h-screen">
         <DisplayVideo selectedVideo={selectedVideo} /> {/* Pass selectedVideo */}
       </div>
+    </div>
     </div>
   );
 }
