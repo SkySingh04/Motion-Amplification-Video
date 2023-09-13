@@ -18,6 +18,8 @@ function App() {
           <Route exact path="/" element={ <HomePage />} />
           <Route path="/upload" element={ <Upload/>} />
           <Route path="/output" element={<Output/>} />
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/input" element={<InputPage/>} />
           <Route path="/navbar" element={<Navbar/>} />
           <Route path="/signup" element={<Signup/>} />
