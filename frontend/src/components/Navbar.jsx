@@ -25,9 +25,21 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const logout=()=>{
+  const logout=async()=>{
     dispatch({ type: 'LOGOUT' });
-    document.cookie = 'jwtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    const res = await fetch('/logout',{
+      method:'GET',
+      headers:{
+        Accept:'application/json',
+        'Content-Type':'application/json'
+      ,
+    credentials:'include'}
+    });
+
+    const data = await res.json();
+    if(res.status === 200){
+      console.log("cookie clear")
+    }
     localStorage.removeItem('email');
   navigate('/login');
   }
@@ -132,18 +144,18 @@ const Navbar = () => {
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
         <div className="lg:hidden absolute top-16 right-8 bg-darker py-2 px-4 w-32 h-auto rounded-lg shadow-lg">
+          <Link to="/" className="block text-white hover:text-red-500  mb-4">
+            Home
+          </Link>
+          <Link to="/about" className="block text-white hover:text-red-500 mb-4">
+            About
+          </Link>
           <Link to="/upload" className="block text-white hover:text-red-500 mb-4">
             Upload
           </Link>
           <Link to="/input" className="block text-white hover:text-red-500 mb-4">
             Input
           </Link>
-          {/* <Link to="/upload" className="block text-white hover:text-red-500 mb-4">
-            Upload
-          </Link> */}
-          {/* <Link to="/input" className="block text-white hover:text-red-500 mb-4">
-            Input
-          </Link> */}
           <Link to= "/login" className="block text-white bg-red-700 hover:bg-dark hover:text-white px-2 py-0.6 rounded-lg mb-2" onClick={logout}>Logout</Link>
         </div>
       )}
