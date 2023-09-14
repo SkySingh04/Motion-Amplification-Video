@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { Storage } from 'aws-amplify';
 
-const Dropzone = ({ onDrop }) => {
+const Dropzone = ({ onDrop,loading}) => {
+  const [uploadProgress, setUploadProgress] = useState(0);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: 'video/*',
@@ -14,8 +16,8 @@ const Dropzone = ({ onDrop }) => {
   return (
     <div className={`h-1/6 w-full ${dropzoneClasses}`} {...getRootProps()}>
       <input className="hidden" {...getInputProps()} />
-      {isDragActive ? (
-        <p className="text-gray-600">Release to drop the files here</p>
+      {loading ? (
+        <p className="text-gray-600">Loading</p>
       ) : (
         <div>
           <p className="text-gray-600">
@@ -28,3 +30,9 @@ const Dropzone = ({ onDrop }) => {
 };
 
 export default Dropzone;
+
+
+
+
+
+
