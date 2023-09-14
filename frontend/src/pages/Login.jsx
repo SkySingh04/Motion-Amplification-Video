@@ -1,12 +1,14 @@
 import React,{useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import {useAuth} from '../AuthContext'
 
 export default function Login() {
 
     const navigate = useNavigate()
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
+    const { state, dispatch } = useAuth();
 
     const loginUser = async(e) => {
         e.preventDefault();
@@ -25,6 +27,7 @@ export default function Login() {
         window.alert("Invalid Credentials");
     }
     else{
+        await dispatch({ type: 'LOGIN', payload: { email } });
         window.alert("Registration Successfull");
         navigate("/upload")
     }
