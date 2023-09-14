@@ -17,6 +17,7 @@ class Parameter(BaseModel):
 
 @app.post("/send/")
 async def run_script(json_params: Parameter):
+    print(json_params)
     command = (
         f"python3 main.py --config_file=configs/{json_params.exp_name}.conf --phase=run_temporal --vid_dir=data/vids{json_params.video} --out_dir=data/output/{json_params.video} --amplification_factor={json_params.ampFact} --fl={json_params.fl} --fh={json_params.fh} --fs={json_params.fs} --n_filter_tap={json_params.n_tap} --filter_type={json_params.filter_type}"
     )
