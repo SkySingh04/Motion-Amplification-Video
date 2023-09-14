@@ -2,7 +2,7 @@ import React from 'react';
 
 const FreqSpect = () => {
   return (
-    <div className="bg-light font-sans p-4 shadow-md">
+    <div className="bg-light rounded-lg font-sans p-4 shadow-md">
       {/* Dominant Frequency Analysis */}
       <div className="mt-4">
         <h2 className="text-lg font-bold">Dominant Frequency Analysis</h2>
@@ -62,7 +62,7 @@ const FreqSpect = () => {
           </div>
           <div className="mt-2">
           <label htmlFor="spectrumFormat" className="text-sm">File Path</label>
-            <input type="text" id="spectrumPath" placeholder="Enter the File Path" className="block text-sm w-full mt-1 border-gray-300 rounded-md focus:ring focus:ring-indigo-200" />
+            <input type="text" id="spectrumPath" placeholder="Enter the File Path" className="block text-sm w-1/3 mt-1 border-gray-300 rounded-md focus:ring focus:ring-indigo-200" />
           </div>
           <div className="mt-2">
             <button className="bg-darker text-sm text-white px-4 py-1 rounded-2xl">Save</button>

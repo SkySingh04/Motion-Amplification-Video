@@ -35,7 +35,7 @@ function UserInput({ onSubmit }) {
   };
 
   return (
-      <div className="bg-gray-200 mt-20 p-4 shadow-md rounded-md fixed right-4 top-1/2 transform -translate-y-1/2 md:w-1/4 h-screen">
+      <div className="bg-light mt-20 p-4 rounded-lg shadow-md w-full h-screen">
         <h2 className="text-lg font-semibold">Parameters:</h2>
         <div className="max-h-full overflow-y-auto">
           <form onSubmit={handleSubmit}>
@@ -205,10 +205,10 @@ function UserInput({ onSubmit }) {
           </select>
         </div>
 
-        <div className="mt-4 py-6">
+        <div className="mt-4 text-sm py-6">
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+              className="bg-darker text-white px-4 py-2 rounded-full hover:d"
             >
               Submit
             </button>

@@ -14,7 +14,7 @@ const ImportData = () => {
   };
 
   return (
-    <div className="font-sans bg-light p-4 shadow-md">
+    <div className="font-sans rounded-lg bg-light p-4 shadow-md">
       <h2 className="text-lg font-bold">Import Data</h2>
       <div className="text-sm mt-4">
         <p>Enter full path and frame rate</p>
@@ -74,7 +74,7 @@ const ImportData = () => {
           <label htmlFor="denoisingOptions" className="text-sm">Denoising Method</label>
           <select
             id="denoisingOptions"
-            className="block text-sm w-full mt-1 border-gray-300 rounded-md focus:ring focus:ring-default"
+            className="block text-sm w-2/3 mt-1 border-gray-300 rounded-md focus:ring focus:ring-default"
           >
             <option value="median">Median</option>
             <option value="mean">Mean</option>

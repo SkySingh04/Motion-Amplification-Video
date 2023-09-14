@@ -31,7 +31,7 @@ const HomePage = () => {
           <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3">
             Industries
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <div className=" ml-4 mr-4 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {/* Example industry cards */}
             <div className="bg-light p-2 md:p-3 rounded-lg shadow-lg">
               <h3 className="text-sm md:text-base lg:text-lg font-semibold mb-1 md:mb-2">
@@ -67,7 +67,7 @@ const HomePage = () => {
           <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3">
             Medical Applications
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 ml-4 mr-4 md:grid-cols-2 gap-4 md:gap-6">
             {/* Example medical application cards */}
             <div className="bg-light p-2 md:p-3 rounded-lg shadow-lg">
               <h3 className="text-sm md:text-base lg:text-lg font-semibold mb-1 md:mb-2">
