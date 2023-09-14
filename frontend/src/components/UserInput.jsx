@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function UserInput() {
+function UserInput({ onSubmit }) {
   const [formData, setFormData] = useState({
     phase: 'train',
     config_file: '',
@@ -15,9 +15,8 @@ function UserInput() {
     fs: '',
     n_filter_tap: '',
     filter_type: 'Butter',
+    Temporal: false, // Initialize Temporal as false
   });
-
-  
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -31,8 +30,8 @@ function UserInput() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log(formData); // Replace with your submission logic
+    // Call the onSubmit prop with the form data
+    onSubmit(formData);
   };
 
   return (
@@ -122,6 +121,7 @@ function UserInput() {
           />
         </div>
 
+
         <div className="mt-4">
           <label className="block text-sm font-medium text-gray-700">
             Enable Velocity Magnification:
@@ -130,6 +130,19 @@ function UserInput() {
             type="checkbox"
             name="velocity_mag"
             checked={formData.velocity_mag}
+            onChange={handleChange}
+            className="mt-1"
+          />
+        </div>
+
+        <div className="mt-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Temporal
+          </label>
+          <input
+            type="checkbox"
+            name="Temporal"
+            checked={formData.Temporal}
             onChange={handleChange}
             className="mt-1"
           />
@@ -193,25 +206,23 @@ function UserInput() {
         </div>
 
         <div className="mt-4 py-6">
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-          >
-            Submit
-          </button>
-          <div>
-            <br></br>
-            
-            <br></br>
-            
-            <br></br>
-            
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            >
+              Submit
+            </button>
+            <div>
+              <br />
+              <br />
+              <br />
+            </div>
           </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
     </div>
   );
 }
 
 export default UserInput;
+

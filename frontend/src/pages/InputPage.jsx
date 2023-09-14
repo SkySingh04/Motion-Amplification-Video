@@ -4,11 +4,11 @@ import ImportData from '../components/ImportData';
 import VideoAmp from '../components/VideoAmp';
 import FreqSpect from '../components/FreqSpect';
 import UserInput from '../components/UserInput';
+
 const InputPage = () => {
   const [dialogVisible, setDialogVisible] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.state?.selectedVideo);
 
   const handleCloseDialog = () => {
     setDialogVisible(false);
@@ -17,30 +17,74 @@ const InputPage = () => {
 
   const selectedVideo = location.state?.selectedVideo;
 
+  // Define state for input parameters
+  const [inputParameters, setInputParameters] = useState({
+    phase: 'train',
+    config_file: '',
+    config_spec: 'configs/configspec.conf',
+    vid_dir: '',
+    frame_ext: 'png',
+    out_dir: '',
+    amplification_factor: 5,
+    velocity_mag: false,
+    fl: '',
+    fh: '',
+    fs: '',
+    n_filter_tap: '',
+    filter_type: 'Butter',
+    Temporal: Boolean,
+  });
+
+  // Handle changes in input fields and update the state
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === 'checkbox' ? checked : value;
+
+    setInputParameters({
+      ...inputParameters,
+      [name]: newValue,
+    });
+  };
+
+  // Handle the JSON creation and logging
+  const handleJSONCreation = () => {
+    // Combine selected video with input parameters
+    const inputData = {
+      selectedVideo: selectedVideo,
+      inputParameters: inputParameters,
+    };
+
+    // Log the JSON object
+    console.log('Input Data:', inputData);
+
+    fetch('http://0.0.0.0:8000/send/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(inputData), // Send the form data as JSON
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Response from server:', data);
+        // You can handle the server response here
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        // Handle errors here
+      });
+  };
+
+  const handleFormSubmit = (formData) => {
+    // You can access the form data here
+    setInputParameters(formData)
+  }
+
+
   useEffect(() => {
     if (selectedVideo) {
-      // Define the endpoint URL
-      const endpoint = '/input';
-
-      // Create a FormData object and append the selected video to it
-      const formData = new FormData();
-      formData.append('selectedVideo', selectedVideo);
-
-      // Send a POST request to the server
-      fetch(endpoint, {
-        method: 'POST',
-        body: formData,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log('Server Response:', data);
-          // Handle the server response as needed
-        })
-        .catch((error) => {
-          console.error('Error sending POST request:', error);
-        });
-    }
-  }, [selectedVideo]);
+      console.log('selectedVideo', selectedVideo);
+    }}, [selectedVideo]);
 
   return (
     <div className={`bg-default flex justify-center items-center h-screen ${dialogVisible ? '' : 'hidden'}`}>
@@ -55,13 +99,22 @@ const InputPage = () => {
               onClick={handleCloseDialog}
               className="text-red-500 hover:text-red-900 px-3 py-0.5 rounded-full shadow-lg max-h-screen overflow-y-auto"
             >
-                x
+              x
             </button>
           </div>
-          <UserInput />
+          <UserInput onSubmit={handleFormSubmit} /> {/* Pass the onSubmit prop */}
           {/* Rest of the content */}
           <VideoAmp />
           <FreqSpect />
+          {/* Button to create and log JSON */}
+          <div className="mt-4">
+            <button
+              onClick={handleJSONCreation}
+              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            >
+              Create JSON
+            </button>
+          </div>
         </div>
       </div>
     </div>
