@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
     cpassword:{
         type:String,
         required:true
+    },
+    videos:{
+        type:Array,
+        required:true
     }, 
     tokens:[
         {
