@@ -14,20 +14,20 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# # Configure CORS settings
-# origins = [
-#     "http://localhost:3000",
-#       "http://localhost:3000/input"  # Add your frontend origin(s) here
-#     # Add more origins if needed
-# ]
+# Configure CORS settings
+origins = [
+    "http://localhost:3000",
+      "http://localhost:3000/input"  # Add your frontend origin(s) here
+    # Add more origins if needed
+]
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=origins,
-#     allow_credentials=True,
-#     allow_methods=["*"],  # You can restrict HTTP methods if needed
-#     allow_headers=["*"],  # You can restrict headers if needed
-# )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # You can restrict HTTP methods if needed
+    allow_headers=["*"],  # You can restrict headers if needed
+)
 # AWS_ACCESS_KEY_ID = settings.AWS_ACCESS_KEY_ID
 # AWS_SECRET_ACCESS_KEY = settings.AWS_SECRET_ACCESS_KEY
 # print(AWS_ACCESS_KEY_ID , AWS_SECRET_ACCESS_KEY)
@@ -81,6 +81,7 @@ def download_video_from_s3(bucket_name,key, download_path):
 @app.post("/upload/")
 async def get(json: JsonRequest):
     BUCKET_NAME = "skillissuevid"
+    print("json:" ,  json)
     obj = json.selectedVideo.split("/")[-1]
     download_video_from_s3(BUCKET_NAME,obj,obj)
     name = obj.split(".")[0]
@@ -94,7 +95,12 @@ async def get(json: JsonRequest):
         command = (
         f"python3 main.py  --config_file=/configs/o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3.conf --phase=run --vid_dir=/data/vids/{name} --out_dir=data/output/{name}_o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3/{obj} --amplification_factor={int(json.inputParameters.amplification_factor)}"
         )
+    print("yaha tak chala")
+
     os.system(command)
+    
+    print("yaha tak chala2")
+    
     upload_file_to_s3(f"data/output/{name}_o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3/{name}_fl0.04_fh0.4_fs30.0_n2_differenceOfIIR_259002.mp4",BUCKET_NAME,f"{name}_output.mp4")
     return {"link": f"https://d175wanlbunlv0.cloudfront.net/{name}_output.mp4"}
 
