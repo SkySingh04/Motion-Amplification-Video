@@ -17,14 +17,7 @@ function uploadToS3(selectedVideo) {
   s3.putObject(params, (err, data) => {
     if (err) {
       console.error('Error uploading to S3:', err);
-    } else {import React, { useCallback, useState } from 'react';
-import { useNavigate , Link } from 'react-router-dom';
-import Dropzone from '../components/Dropzone';
-import VideoPreview from '../components/VideoPreview';
-import DisplayVideo from '../components/DisplayVideo';
-import s3 from '../aws-config';
-import Navbar from '../components/Navbar';
-
+    } else {
 function Upload() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -139,7 +132,7 @@ function Upload() {
   );
 }
 
-export default Upload;
+
 
       console.log('Successfully uploaded to S3:', data);
     }

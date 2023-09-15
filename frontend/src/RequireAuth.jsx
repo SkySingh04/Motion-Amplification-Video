@@ -10,7 +10,7 @@ const RequireAuth = ({children}) => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 1000)
+    }, 5000)
   }, []);
   if(state.isAuthenticated){
     return children
