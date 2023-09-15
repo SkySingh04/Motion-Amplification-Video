@@ -12,9 +12,9 @@ const OpVid = ({ videoPath }) => {
     <div className="w-3/4 h-screen bg-light flex flex-col justify-center items-center">
       {!selectedFile ? (
         <div>
-          <label htmlFor="fileInput" className="bg-default text-white py-2 px-4 rounded-full hover:bg-darker cursor-pointer">
+          {/* <label htmlFor="fileInput" className="bg-default text-white py-2 px-4 rounded-full hover:bg-darker cursor-pointer">
             Choose File
-          </label>
+          </label> */}
           <input
             type="file"
             id="fileInput"
