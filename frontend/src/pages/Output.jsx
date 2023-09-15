@@ -9,9 +9,28 @@ function Output() {
   const parameters = ['Parameter 1', 'Parameter 2', 'Parameter 3']; // Update with your parameters
 
   // Function to handle the download action
-  const handleDownload = () => {
-    // Implement the download logic here
-    // For example, you can create a download link or use the HTML5 download attribute
+  const handleDownload = async () => {
+    try {
+      // Send a GET request to the API endpoint
+      const response = await fetch('http://localhost:8080/download', {
+        method: 'GET',
+      });
+
+      if (response.ok) {
+        // If the response is successful, trigger the download
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'your_file_name.ext'); // Replace with your desired file name
+        document.body.appendChild(link);
+        link.click();
+      } else {
+        console.error('Failed to download file');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (

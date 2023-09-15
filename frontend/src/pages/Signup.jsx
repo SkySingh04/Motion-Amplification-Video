@@ -47,30 +47,30 @@ const Signup = () => {
 <div>
     <Navbar/>
 
-<div className='relative w-full h-screen bg-zinc-900/90'>
+<div className='relative w-full h-screen bg-default'>
 <div className='flex justify-center items-center h-full'>
-    <form method='POST' className='max-w-[400px] w-full mx-auto bg-white p-8'>
-        <h2 className='text-4xl font-bold text-center py-4'>MAV</h2>
+    <form method='POST' className='max-w-[400px] w-full rounded-lg mx-auto bg-light p-8'>
+        <h2 className='text-3xl font-bold text-center py-4'>MAV Signup</h2>
         <div className='flex flex-col mb-4 pt-[1rem]'>
-            <label>Name</label>
-            <input className='border relative bg-gray-100 p-2' type="text" id='name' name='name' value={user.name} onChange={handleInputs} placeholder='Name' />
+            <label className='ml-2'>Name</label>
+            <input className='border rounded-full relative bg-gray-100 p-2' type="text" id='name' name='name' value={user.name} onChange={handleInputs} placeholder='Name' />
         </div>
         <div className='flex flex-col mb-4 pt-[1rem]'>
-            <label>Email</label>
-            <input className='border relative bg-gray-100 p-2' type="email" id='email' name='email' value={user.email} onChange={handleInputs} placeholder='Email' />
+            <label className='ml-2'>Email</label>
+            <input className='border rounded-full relative bg-gray-100 p-2' type="email" id='email' name='email' value={user.email} onChange={handleInputs} placeholder='Email' />
         </div>
         <div className='flex flex-col py-[1rem]'>
-            <label>Password</label>
-            <input className='border relative bg-gray-100 p-2' type="password" id='password' name='password' value={user.password} onChange={handleInputs} placeholder='Password'/>
+            <label className='ml-2'>Password</label>
+            <input className='border rounded-full relative bg-gray-100 p-2' type="password" id='password' name='password' value={user.password} onChange={handleInputs} placeholder='Password'/>
         </div>
         <div className='flex flex-col py-[1rem]'>
-            <label>Confirm Password</label>
-            <input className='border relative bg-gray-100 p-2' type="password" id='cpassword' name='cpassword' value={user.cpassword} onChange={handleInputs} placeholder='Confirm Password'/>
+            <label className='ml-2'>Confirm Password</label>
+            <input className='border rounded-full relative bg-gray-100 p-2' type="password" id='cpassword' name='cpassword' value={user.cpassword} onChange={handleInputs} placeholder='Confirm Password'/>
         </div>
-        <button className='w-full py-3 mt-8 bg-indigo-600 hover:bg-indigo-500 relative text-white' onClick={Postdata}>Signup</button>
+        <button className='w-full py-3 mt-8 bg-darker hover:bg-dark rounded-full relative text-white' onClick={Postdata}>Signup</button>
         <div className='flex gap-4 justify-center'>
             <p className='text-center mt-8'>Already a member?</p> 
-            <a className='text-center mt-8 text-[#00BFFF]' href='/login'>Login</a>
+            <a className='text-center mt-8 text-default' href='/login'>Login here</a>
         </div>
     </form>
 </div>
