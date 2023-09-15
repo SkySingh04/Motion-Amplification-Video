@@ -55,7 +55,7 @@ class JsonRequest(BaseModel):
 
 def upload_file_to_s3(file_name,bucket,object_name):
     print("Uploading video to S3...")
-    s3 = boto3.client('s3',aws_access_key_id='AKIAVAHZBIOLFULVDWVC',aws_secret_access_key='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')
+    s3 = boto3.client('s3',aws_access_key_id='',aws_secret_access_key='')
 
     if object_name is None:
         object_name = os.path.basename(file_name)
@@ -69,7 +69,7 @@ def upload_file_to_s3(file_name,bucket,object_name):
 
 def download_video_from_s3(bucket_name,key, download_path):
     print("Downloading video from S3...")
-    s3 = boto3.resource('s3',aws_access_key_id='AKIAVAHZBIOLFULVDWVC',aws_secret_access_key='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')
+    s3 = boto3.resource('s3',aws_access_key_id='',aws_secret_access_key='')
     try:
         s3.Bucket(bucket_name).download_file(key, download_path)
     except botocore.exceptions.ClientError as e:
