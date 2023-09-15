@@ -50,11 +50,11 @@ function Upload() {
         const objectCount = data.Contents.length; // Get the count of existing objects
   
         // Set the Key based on the count of existing objects
-        const key = `video_${objectCount + 1}.${selectedVideo.name.split('.').pop()}`;
+        const k = `video_${objectCount + 1}.${selectedVideo.name.split('.').pop()}`;
         const email = localStorage.getItem("email")
         const params = {
           Bucket: 'skillissuevid',
-          Key: key,
+          Key: k,
           Body: selectedVideo,
           ContentType: 'video/mp4',
         };
@@ -65,7 +65,7 @@ function Upload() {
           } else {
             console.log('Successfully uploaded to S3:', uploadData);
             
-            const link = "https://d175wanlbunlv0.cloudfront.net/"+key
+            const link = "https://d175wanlbunlv0.cloudfront.net/"+k
             const res = await fetch('/vid',{
               method:'POST',
               headers:{
@@ -93,7 +93,7 @@ function Upload() {
           <VideoPreview
             selectedVideo={selectedVideo}
             setSelectedVideo={setSelectedVideo}
-            key={videoPreviewKey}
+            refreshKey={videoPreviewKey}
           />
           {selectedVideo && (
             <Link 
