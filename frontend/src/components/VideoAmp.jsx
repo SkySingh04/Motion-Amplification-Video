@@ -52,9 +52,9 @@ const VideoAmp = () => {
     value={scaleValue}
     onChange={handleScaleChange}
     onInput={handleScaleChange} // Add this line for real-time input
-    className="w-full"
+    className="w-1/3"
   />
-  <p className="text-sm text-center">{scaleValue}</p>
+  <p className="text-sm ml-2 mb-1">{scaleValue}</p>
 
   {/* Division Lines
   <div className="absolute bottom-0 w-full h-2 bg-gray-300">
