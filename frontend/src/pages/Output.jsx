@@ -36,9 +36,12 @@ function Output() {
 const location = useLocation()
 const navigate = useNavigate()
 
-const params = location.state?.data.InputParameters
+const data = location.state?.data 
+const params = location.state?.data.inputParameters
 const link = location.state?.data.link
-
+console.log("data:" + data)
+console.log("params:" + params)
+console.log("link:" + link)
   return (
     <div>
       <Navbar />

@@ -91,14 +91,15 @@ async def get(json: JsonRequest):
     if json.inputParameters.Temporal:
         command = (
         f"python main.py --config_file=configs/o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3.conf --phase=run_temporal --vid_dir=data/vids/{name} --out_dir=data/output/{name}_o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3 --amplification_factor={int(json.inputParameters.amplification_factor)} --fl={float(json.inputParameters.fl)} --fh={float(json.inputParameters.fh)} --fs={int(json.inputParameters.fs)} --n_filter_tap={int(json.inputParameters.n_filter_tap)} --filter_type={json.inputParameters.filter_type}")
+        folder = f"{name}_o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3_fl{json.inputParameters.fl}_fh{json.inputParameters.fh}_fs{json.inputParameters.fs}_n{json.inputParameters.n_filter_tap}_{json.inputParameters.filter_type}"
     else:
         command = (
-        f"python main.py  --config_file=/configs/o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3.conf --phase=run --vid_dir=/data/vids/{name} --out_dir=data/output/{name}_o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3 --amplification_factor={int(json.inputParameters.amplification_factor)}"
+        f"python main.py  --config_file=configs/o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3.conf --phase=run --vid_dir=data/vids/{name} --out_dir=data/output/{name}_o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3 --amplification_factor={int(json.inputParameters.amplification_factor)}"
         )
+        folder=f"{name}_o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3"
     os.system(command)
-    folder = f"{name}_o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3_fl{json.inputParameters.fl}_fh{json.inputParameters.fh}_fs{json.inputParameters.fs}_n{json.inputParameters.n_filter_tap}_{json.inputParameters.filter_type}"
     upload_file_to_s3(f"data/output/{folder}/{folder}_259002.mp4",BUCKET_NAME,f"{name}_output.mp4")
-    return {"link": f"https://d175wanlbunlv0.cloudfront.net/{name}_output.mp4","InputParameters":json}
+    return {"link": f"https://d175wanlbunlv0.cloudfront.net/{name}_output.mp4","inputParameters":json.inputParameters}
 
 
 
