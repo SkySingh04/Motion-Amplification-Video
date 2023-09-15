@@ -198,7 +198,11 @@ const InputPage = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log('Response from server:', data);
-        // You can handle the server response here
+        navigate('/output',{
+          state:{
+            data: data
+          }
+        })
       })
       .catch((error) => {
         console.error('Error:', error);

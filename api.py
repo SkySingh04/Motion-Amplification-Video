@@ -98,7 +98,7 @@ async def get(json: JsonRequest):
     os.system(command)
     folder = f"{name}_o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3_fl{json.inputParameters.fl}_fh{json.inputParameters.fh}_fs{json.inputParameters.fs}_n{json.inputParameters.n_filter_tap}_{json.inputParameters.filter_type}"
     upload_file_to_s3(f"data/output/{folder}/{folder}_259002.mp4",BUCKET_NAME,f"{name}_output.mp4")
-    return {"link": f"https://d175wanlbunlv0.cloudfront.net/{name}_output.mp4"}
+    return {"link": f"https://d175wanlbunlv0.cloudfront.net/{name}_output.mp4","InputParameters":json}
 
 
 
