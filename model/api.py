@@ -90,10 +90,10 @@ async def get(json: JsonRequest):
     os.system(com)
     if json.inputParameters.Temporal:
         command = (
-        f"python3 model/main.py --config_file=model/configs/o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3.conf --phase=run_temporal --vid_dir=model/data/vids/{object} --out_dir=/ --amplification_factor={json.inputParameters.amplification_factor} --fl={json.inputParameters.fl} --fh={json.inputParameters.fh} --fs={json.inputParameters.fs} --n_filter_tap={json.inputParameters.n_filter_tap} --filter_type={json.inputParameters.filter_type}")
+        f"python3 model/main.py --config_file=model/configs/o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3.conf --phase=run_temporal --vid_dir=model/data/vids/{object} --out_dir=/ --amplification_factor={int(json.inputParameters.amplification_factor)} --fl={float(json.inputParameters.fl)} --fh={float(json.inputParameters.fh)} --fs={int(json.inputParameters.fs)} --n_filter_tap={int(json.inputParameters.n_filter_tap)} --filter_type={json.inputParameters.filter_type}")
     else:
         command = (
-        f"python3 model/main.py  --config_file=model/configs/o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3.conf --phase=run --vid_dir=model/data/vids/{object} --out_dir=/ --amplification_factor={json.inputParameters.amplification_factor}"
+        f"python3 model/main.py  --config_file=model/configs/o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3.conf --phase=run --vid_dir=model/data/vids/{object} --out_dir=/ --amplification_factor={int(json.inputParameters.amplification_factor)}"
         )
     os.system(command)
     upload_file_to_s3(f"model/data/output/{object}_o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3/{object}_fl0.04_fh0.4_fs30.0_n2_differenceOfIIR_259002.mp4",BUCKET_NAME,f"{object}_output.mp4")
