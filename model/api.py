@@ -3,8 +3,24 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import boto3
 import botocore
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# Configure CORS settings
+origins = [
+    "http://localhost:3000",
+      "http://localhost:3000/input"  # Add your frontend origin(s) here
+    # Add more origins if needed
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # You can restrict HTTP methods if needed
+    allow_headers=["*"],  # You can restrict headers if needed
+)
 
 class inputParameters(BaseModel):
     amplification_factor: int
@@ -63,4 +79,4 @@ async def get(json: inputParameters):
 
 if __name__ == '__main__':
     print("Starting server...")
-    os.system("uvicorn model.api:app --host 0.0.0.0 --port 8000")
+    os.system("uvicorn model.api:app --host localhost --port 8080")
