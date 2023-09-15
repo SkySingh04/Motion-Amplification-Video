@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const OpVid = ({ videoPath }) => {
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(videoPath);
 
   const handleFileSelect = (e) => {
     const file = e.target.files[0];
@@ -26,7 +26,7 @@ const OpVid = ({ videoPath }) => {
       ) : (
         <div className="w-3/4 h-3/4 rounded-2xl">
           <video controls className="w-full h-full">
-            <source src={URL.createObjectURL(selectedFile)} type="video/mp4" />
+            <source src={selectedFile} type="video/mp4" />
           </video>
         </div>
       )}
