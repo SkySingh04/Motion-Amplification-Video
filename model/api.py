@@ -4,6 +4,15 @@ from pydantic import BaseModel
 import boto3
 import botocore
 from fastapi.middleware.cors import CORSMiddleware
+# from pydantic_settings import BaseSettings
+
+
+# class Settings(BaseSettings):
+#     AWS_ACCESS_KEY_ID: str
+#     AWS_SECRET_ACCESS_KEY: str
+
+
+# settings = Settings()
 
 app = FastAPI()
 
@@ -21,16 +30,30 @@ app.add_middleware(
     allow_methods=["*"],  # You can restrict HTTP methods if needed
     allow_headers=["*"],  # You can restrict headers if needed
 )
+# AWS_ACCESS_KEY_ID = settings.AWS_ACCESS_KEY_ID
+# AWS_SECRET_ACCESS_KEY = settings.AWS_SECRET_ACCESS_KEY
+# print(AWS_ACCESS_KEY_ID , AWS_SECRET_ACCESS_KEY)
 
-class inputParameters(BaseModel):
+class InputParameters(BaseModel):
+    phase: str
+    config_file: str
+    config_spec: str
+    vid_dir: str
+    frame_ext: str
+    out_dir: str
     amplification_factor: int
+    velocity_mag: bool
     fl: float
     fh: float
     fs: float
     n_filter_tap: int
     filter_type: str
-    temporal : bool
+    Temporal: bool
+
+class JsonRequest(BaseModel):
     selectedVideo: str
+    inputParameters: InputParameters
+
 
 def upload_file_to_s3(file_name,bucket,object_name):
     print("Uploading video to S3...")
@@ -58,8 +81,9 @@ def download_video_from_s3(bucket_name,key, download_path):
             raise
 
 @app.post("/upload/")
-async def get(json: inputParameters):
+async def get(json: JsonRequest):
     BUCKET_NAME = "skillissuevid"
+    print(json)
     obj = json.selectedVideo.split("/")[-1]
     download_video_from_s3(BUCKET_NAME,obj,f"model/{obj}")
     object = obj.split(".")[0]
