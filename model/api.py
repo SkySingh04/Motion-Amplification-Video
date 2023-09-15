@@ -6,11 +6,9 @@ import botocore
 from fastapi.middleware.cors import CORSMiddleware
 # from pydantic_settings import BaseSettings
 
-
 # class Settings(BaseSettings):
 #     AWS_ACCESS_KEY_ID: str
 #     AWS_SECRET_ACCESS_KEY: str
-
 
 # settings = Settings()
 
@@ -90,12 +88,12 @@ async def get(json: JsonRequest):
     os.mkdir(f"model/data/vids/{object}")
     com= f"ffmpeg -i model/{obj} model/data/vids/{object}"+"/%06d.png"
     os.system(com)
-    if json.temporal:
+    if json.inputParameters.Temporal:
         command = (
-        f"python3 model/main.py --config_file=model/configs/o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3.conf --phase=run_temporal --vid_dir=model/data/vids/{object} --out_dir=/ --amplification_factor={json.amplification_factor} --fl={json.fl} --fh={json.fh} --fs={json.fs} --n_filter_tap={json.n_filter_tap} --filter_type={json.filter_type}")
+        f"python3 model/main.py --config_file=model/configs/o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3.conf --phase=run_temporal --vid_dir=model/data/vids/{object} --out_dir=/ --amplification_factor={json.inputParameters.amplification_factor} --fl={json.inputParameters.fl} --fh={json.inputParameters.fh} --fs={json.inputParameters.fs} --n_filter_tap={json.inputParameters.n_filter_tap} --filter_type={json.inputParameters.filter_type}")
     else:
         command = (
-        f"python3 model/main.py  --config_file=model/configs/o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3.conf --phase=run --vid_dir=model/data/vids/{object} --out_dir=/ --amplification_factor={json.amplification_factor}"
+        f"python3 model/main.py  --config_file=model/configs/o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3.conf --phase=run --vid_dir=model/data/vids/{object} --out_dir=/ --amplification_factor={json.inputParameters.amplification_factor}"
         )
     os.system(command)
     upload_file_to_s3(f"model/data/output/{object}_o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3/{object}_fl0.04_fh0.4_fs30.0_n2_differenceOfIIR_259002.mp4",BUCKET_NAME,f"{object}_output.mp4")
