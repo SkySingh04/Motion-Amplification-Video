@@ -185,7 +185,8 @@ const InputPage = () => {
     };
 
     // Log the JSON object
-    console.log('Input Data:', inputData);
+    console.log( inputData);
+    
 
     fetch('http://localhost:8080/upload/', {
       method: 'POST',
