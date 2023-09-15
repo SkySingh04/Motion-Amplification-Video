@@ -14,7 +14,7 @@ function UserInput({ onSubmit }) {
     fh: 0,
     fs: 0,
     n_filter_tap: 0,
-    filter_type: 'Butter',
+    filter_type: 'butter',
     Temporal: false, // Initialize Temporal as false
   });
 
@@ -205,8 +205,9 @@ function UserInput({ onSubmit }) {
             onChange={handleChange}
             className="block w-full mt-1 p-2 border border-gray-300 rounded-md"
           >
-            <option value="Butter">Butter</option>
-            <option value="FIR">FIR</option>
+            <option value="butter">Butter</option>
+            <option value="fir">fir</option>
+            <option value="differenceOfIIR">differenceOfIIR</option>
           </select>
         </div>
 
