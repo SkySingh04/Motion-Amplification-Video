@@ -71,6 +71,35 @@ router.post('/login', async (req,res) => {
     }
 })
 
+router.post('/vid', async (req, res) => {
+    try {
+      const { email, link } = req.body;
+  
+      const user = await User.findOne({ email });
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      user.videos.push(link);
+      await user.save();
+  
+      res.status(200).json({ message: 'Link added to user videos' });
+    } catch (error) {
+      console.error('Server Error:', error.message);
+      res.status(500).json({ message: 'Server Error' });
+    }
+  });
+
+  router.post('/videos', async (req,res) => {
+    try{
+        let myData = await User.findOne({'email': req.body.email})
+        res.json({videos:myData.videos})
+    }catch(error){
+        res.send("Server Error",error.message)
+    }
+})
+
 // router.post('/menu', async (req,res) => {
 //         let data = req.body.order_data
 //         await data.splice(0,0,{Order_date:req.body.order_date})
@@ -103,18 +132,14 @@ router.post('/login', async (req,res) => {
     
 // })
 
-// router.post('/owner', async (req,res) => {
-//     try{
-//         let myData = await Order.findOne({'email': req.body.email})
-//         res.json({orderData:myData})
-//     }catch(error){
-//         res.send("Server Error",error.message)
-//     }
-// })
-
 router.get('/home',authenticate,(req,res) => {
     console.log('Hello');
     res.json(req.rootUser);
 });
+
+router.get('/logout',(req,res) => {
+    res.clearCookie('jwtoken',{path:'/'})
+    res.status(200).send("user logout")
+})
 
 module.exports = router
