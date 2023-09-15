@@ -44,6 +44,7 @@ arguments = parser.parse_args()
 
 
 def main(args):
+    print(args.config_file)
     configspec = ConfigObj(args.config_spec, raise_errors=True)
     config = ConfigObj(args.config_file,configspec=configspec,raise_errors=True,file_error=True)
     # Validate to get all the default values.
