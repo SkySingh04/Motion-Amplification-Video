@@ -99,6 +99,8 @@ async def get(json: JsonRequest):
     upload_file_to_s3(f"model/data/output/{object}_o3f_hmhm2_bg_qnoise_mix4_nl_n_t_ds3/{object}_fl0.04_fh0.4_fs30.0_n2_differenceOfIIR_259002.mp4",BUCKET_NAME,f"{object}_output.mp4")
     return {"link": f"https://d175wanlbunlv0.cloudfront.net/{object}_output.mp4"}
 
+
+
 if __name__ == '__main__':
     print("Starting server...")
     os.system("uvicorn model.api:app --host localhost --port 8080")

@@ -10,10 +10,10 @@ function UserInput({ onSubmit }) {
     out_dir: '',
     amplification_factor: 5,
     velocity_mag: false,
-    fl: '',
-    fh: '',
-    fs: '',
-    n_filter_tap: '',
+    fl: 0,
+    fh: 0,
+    fs: 0,
+    n_filter_tap: 0,
     filter_type: 'Butter',
     Temporal: false, // Initialize Temporal as false
   });
@@ -114,6 +114,7 @@ function UserInput({ onSubmit }) {
           <label className="block text-sm font-medium text-gray-700">Amplification Factor:</label>
           <input
             type="number"
+            pattern="[0-9]{10}"
             name="amplification_factor"
             value={formData.amplification_factor}
             onChange={handleChange}
@@ -151,8 +152,9 @@ function UserInput({ onSubmit }) {
         <div className="mt-4">
           <label className="block text-sm font-medium text-gray-700">Low Cutoff Frequency:</label>
           <input
-            type="text"
+            type="number"
             name="fl"
+            pattern="[0-9]{10}"
             value={formData.fl}
             onChange={handleChange}
             className="block w-full mt-1 p-2 border border-gray-300 rounded-md"
@@ -162,8 +164,9 @@ function UserInput({ onSubmit }) {
         <div className="mt-4">
           <label className="block text-sm font-medium text-gray-700">High Cutoff Frequency:</label>
           <input
-            type="text"
+            type="number"
             name="fh"
+            pattern="[0-9]{10}"
             value={formData.fh}
             onChange={handleChange}
             className="block w-full mt-1 p-2 border border-gray-300 rounded-md"
@@ -173,8 +176,9 @@ function UserInput({ onSubmit }) {
         <div className="mt-4">
           <label className="block text-sm font-medium text-gray-700">Sampling Rate:</label>
           <input
-            type="text"
+            type="number"
             name="fs"
+            pattern="[0-9]{10}"
             value={formData.fs}
             onChange={handleChange}
             className="block w-full mt-1 p-2 border border-gray-300 rounded-md"
@@ -186,6 +190,7 @@ function UserInput({ onSubmit }) {
           <input
             type="number"
             name="n_filter_tap"
+            pattern="[0-9]{10}"
             value={formData.n_filter_tap}
             onChange={handleChange}
             className="block w-full mt-1 p-2 border border-gray-300 rounded-md"

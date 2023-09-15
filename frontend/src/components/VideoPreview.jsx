@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import s3 from '../aws-config'; // Import the AWS configuration 
 
 const VideoPreview = ({ selectedVideo, setSelectedVideo,refreshKey }) => {
-  const [videos, setVideos] = useState({});
+  const [videos, setVideos] = useState([]);
   const handleVideoClick = (video) => {
     setSelectedVideo(video); // Update the selected video
   };
