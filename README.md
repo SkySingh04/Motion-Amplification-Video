@@ -2,9 +2,13 @@
 
 Motion Amplification Video (MAV) offers a groundbreaking solution for precise vibrational analysis across industries. Current methods are costly and often miss subtle vibrations, impacting sectors like automotive, power plants, medical, and engineering. MAV processes video clips to amplify motion details, facilitating defect detection. Hosted on the cloud, it drastically reduces costs, captures time waveforms, and performs FFT spectrum analysis for noise, vibration, and shock analysis.
 
+
 ## Overview
 
 MAV empowers engineers to assess structural integrity effectively. It enhances safety and performance in the automotive sector, monitors machinery vibrations in power plants, identifies structural issues in industrial facilities, and offers a cost-effective, non-invasive method for heartbeat monitoring in medicine. Our cloud-powered MAV solution promises safety, efficiency, and reliability in vital sectors.
+
+## Demo Video:  [Youtube](https://youtu.be/ygeVFEa4_oo)
+
 
 ## Features
 
