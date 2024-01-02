@@ -29,7 +29,7 @@ Thank you for your interest in contributing to Motion-Amplification-Video! We ap
 
 1. **Navigate to Backend Directory:**
    ```bash
-   cd backend-express
+   cd server
    ```
 
 2. **Install Dependencies:**
@@ -45,25 +45,14 @@ Thank you for your interest in contributing to Motion-Amplification-Video! We ap
 
 #### Flask Backend
 
-1. **Navigate to Flask Backend Directory:**
-   ```bash
-   cd backend-flask
-   ```
-
-2. **Set Up Virtual Environment (Optional but Recommended):**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # For macOS/Linux. Use venv\Scripts\activate for Windows.
-   ```
-
-3. **Install Flask Dependencies:**
+1. **Install Flask Dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Run the Flask Server:**
+2. **Run the Flask Server:**
    ```bash
-   flask run
+   flask run main.py
    ```
    The Flask backend will run at `http://localhost:5000`.
 
